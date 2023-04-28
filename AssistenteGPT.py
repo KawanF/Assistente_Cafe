@@ -2,10 +2,11 @@ import openai
 import pyttsx3
 import speech_recognition as sr
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 engine = pyttsx3.init()
 lang = 'pt-BR'
+key_word = 'gpt'  
 
 def transcrever_audio_to_text(filename):
     recognizer = sr.Recognizer()
@@ -21,11 +22,11 @@ def generate_response(prompt):
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content":
-            "You are a helpful assistant for a 80 years old lady."},
+            "You are a helpful assistant that makes short answers."},
             {"role": "user", "content": prompt},
         ],
         temperature=0.5,
-        max_tokens=150,
+        max_tokens=400,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0,
@@ -41,14 +42,14 @@ def speak_text(text):
 
 def main():
     while True:
-        print("Diga 'GPT' para iniciar a gravar a sua pergunta.")
+        print(f"Diga {key_word} para iniciar a gravar a sua pergunta.")
         with sr.Microphone() as source:
             recognizer = sr.Recognizer()
             audio = recognizer.listen(source)
             try:
                 transcription = recognizer.recognize_google(audio, language=lang)
-                if transcription.lower() == "gpt":
-                    filename = "/input.wav"
+                if transcription.lower() == key_word:
+                    filename = "input.wav"
                     print("Diga a sua pergunta")
                     with sr.Microphone() as source:
                         recognizer = sr.Recognizer()
