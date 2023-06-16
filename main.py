@@ -13,7 +13,7 @@ class ChatApp:
         # model: O modelo de linguagem a ser usado (padrão: "gpt-3.5-turbo")
         # load_file: O arquivo JSON contendo mensagens anteriores (opcional)
 
-        openai.api_key = "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"  # Define a chave da API do OpenAI
+        openai.api_key = os.environ["OPENAI_API_KEY"]
         self.model = model  # Define o modelo de linguagem a ser usado
         self.messages = []  # Lista para armazenar as mensagens da conversa
 
@@ -85,7 +85,7 @@ def speak_text(text):
     engine.runAndWait()  # Executa a fala
 
 
-os.environ["OPENAI_API_KEY"] = "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"  # Define a chave da API do OpenAI
+os.environ["OPENAI_API_KEY"] = "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"  # Define a chave da API do OpenAI
 engine = pyttsx3.init()  # Inicializa o mecanismo de fala do pyttsx3
 lang = 'pt-br'  # Define o idioma para reconhecimento de fala como português brasileiro
 key_word = 'café'  # Palavra-chave para iniciar a gravação da pergunta
