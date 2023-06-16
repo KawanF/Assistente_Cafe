@@ -42,7 +42,7 @@ class ChatApp:
             model=self.model,
             messages=self.messages,
             temperature=0.5,
-            max_tokens=3000,
+            max_tokens=4000,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0,
