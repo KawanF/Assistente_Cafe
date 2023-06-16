@@ -114,10 +114,10 @@ def main():
                     text = transcrever_audio_to_text(filename)  # Transcreve o áudio para texto
                     if text:
                         print(f"Você disse: {text}")
-                        speak_text(response)  # Converte a resposta do assistente em fala
-                        print(f"GPT disse: {response}")
                         response = app.chat(text)  # Interage com o assistente de chat
-                        
+                        print(f"GPT disse: {response}")
+                        speak_text(response)  # Converte a resposta do assistente em fala
+                 
 
             except Exception as e:
                 print("Ocorreu um erro: {}".format(e))  # Manipula erros durante a transcrição ou interação com o assistente
